@@ -1,0 +1,18 @@
+﻿{
+
+	"export_dir" : "",
+	"iconPath" : "",
+	"iconSmallPath" : "",
+	"projectName" : "MegaBot",
+	"start_scene" : "Scene",
+	"alignRect" :
+	{
+		"x" : 16.000000,
+		"y" : 16.000000
+	},
+	"useAlignRect" : true,
+	"pixelsPerUnit" : 50.000000,
+	"pixelsHeight" : 192.000000,
+	"hideCursor" : false,
+	"edited_asset" : "Scene.scn"
+}
