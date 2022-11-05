@@ -1,19 +1,34 @@
 
 #include "Character.h"
+#include "Walker.h"
+#include "Jumper.h"
+#include "Turret.h"
 #include "Root/Root.h"
 
 namespace Oak
 {
-	ENTITYREG(SceneEntity, Character, "Sample", "Character")
+	ENTITYREG(SceneEntity, Character, "MegaBot", "Character")
 
 	META_DATA_DESC(Character)
 		BASE_SCENE_ENTITY_PROP(Character)
 		ASSET_TEXTURE_PROP(Character, projectile, "Visual", "Projectile")
-		ASSET_TEXTURE_PROP(Character, enemy, "Visual", "Enemy")
 		ASSET_ANIM_GRAPH_2D_PROP(Character, explostion, "Visual", "Explostion")
 		SCENEOBJECT_PROP(Character, camera, "Properties", "camera")
 		SCENEOBJECT_PROP(Character, screensRoot, "Properties", "screens root")
 	META_DATA_DESC_END()
+
+	Character* Character::player = nullptr;
+
+	bool TestRect(Math::Vector3 rect1Left, Math::Vector3 rect1Right, Math::Vector3 rect2Left, Math::Vector3 rect2Right)
+	{
+		if (rect1Right.x >= rect2Left.x && rect1Left.x <= rect2Right.x &&
+			rect1Right.y >= rect2Left.y && rect1Left.y <= rect2Right.y)
+		{
+			return true;
+		}
+
+		return false;
+	}
 
 	void Character::Init()
 	{
@@ -24,6 +39,8 @@ namespace Oak
 
 	void Character::Play()
 	{
+		player = this;
+
 		ScriptEntity2D::Play();
 
 		animRef = FindChild<AnimGraph2D>();
@@ -36,10 +53,19 @@ namespace Oak
 			screen->SetVisiblity(false);
 		}
 
-		SetActiveScreen(0);
+		spawnPos = transform.position;
+
+		SetActiveScreen(true);
 	}
 
-	void Character::SetActiveScreen(int index)
+	void Character::SetSpawnPoint(Math::Vector3 pos)
+	{
+		spawnRoom = curScreen;
+		spawnPos = pos;
+		spawnPos.x += screenOffset;
+	}
+
+	void Character::SetActiveScreen(bool isRespawn)
 	{
 		auto& screens = screensRoot->GetChilds();
 
@@ -48,9 +74,36 @@ namespace Oak
 			screens[curScreen]->SetVisiblity(false);
 		}
 
-		curScreen = index;
+		if (isRespawn)
+		{
+			curScreen = spawnRoom;
+		}
+		else
+		{
+			curScreen++;
+		}
 
 		screens[curScreen]->SetVisiblity(true);
+
+		auto childs = screens[curScreen]->GetChilds();
+
+		for (auto& child : childs)
+		{
+			if (auto walker = dynamic_cast<Walker*>(child))
+			{
+				walker->Reset();
+			}
+			else
+			if (auto jumper = dynamic_cast<Jumper*>(child))
+			{
+				jumper->Reset();
+			}
+			else
+			if (auto turret = dynamic_cast<Turret*>(child))
+			{
+				turret->Reset();
+			}
+		}
 
 		auto pos = screens[curScreen]->GetTransform().position;
 
@@ -58,12 +111,20 @@ namespace Oak
 
 		camera->GetTransform().position = pos + Math::Vector3(128.0f, 96.0f, 0.0f);
 
-		pos = transform.position;
-		pos.x = screenOffset + 17.0f;
+		if (isRespawn)
+		{
+			pos = spawnPos;
+			ownProjectiles.clear();
+			enemyProjectiles.clear();
+		}
+		else
+		{
+			pos = transform.position;
+			pos.x = screenOffset + 8.0f;
+			pos.y += 4.0f;
+		}
 
 		controllerRef->SetPosition(pos);
-
-		timeToSpawnBot = 2.0f + Math::Rand() * 2.0f;
 	}
 
 	void Character::Update(float dt)
@@ -89,15 +150,16 @@ namespace Oak
 			flipped = false;
 		}
 
-		if (!projectileFired && GetRoot()->GetControls()->DebugKeyPressed("KEY_F", AliasAction::JustPressed))
+		if (ownProjectiles.size() == 0 && GetRoot()->GetControls()->DebugKeyPressed("KEY_F", AliasAction::JustPressed))
 		{
-			projectileFired = true;
-			projectilePos = transform.position;
-			projectilePos.y += 14.0f;
+			Projectile projectile;
+			projectile.dir.x = flipped ? -1.0f : 1.0f;
+			projectile.pos = transform.position;
+			projectile.pos.y += 14.0f;
+			projectile.pos.x += 12.0f * projectile.dir.x;
+			projectile.speed = 200.0f;
 
-			projectileDir = flipped ? -1.0f : 1.0f;
-
-			projectilePos.x += 16.0f * projectileDir;
+			ownProjectiles.push_back(projectile);
 		}
 
 		if (fabs(moveDir.x) > 0.1f)
@@ -144,79 +206,92 @@ namespace Oak
 			}
 		}
 
+		if (transform.position.x <= screenOffset && moveDir.x < 0.0f)
+		{
+			moveDir.x = 0.0f;
+		}
+
 		controllerRef->Move(moveDir);
 
 		if (transform.position.x > screenOffset + 256.0f - 10.0f)
 		{
-			SetActiveScreen(curScreen + 1);
+			SetActiveScreen(false);
+		}
+
+		if (transform.position.y < -10.0f)
+		{
+			SetActiveScreen(true);
 		}
 
 		animRef->anim.GotoNode(anim, false);
 
-		if (projectileFired)
+		for (int i = 0; i < ownProjectiles.size(); i++)
 		{
-			projectilePos.x += projectileDir * 200.0f * dt;
-			projectilePos.z = -0.001f;
+			auto& projectile = ownProjectiles[i];
 
-			if (projectilePos.x < screenOffset || projectilePos.x > screenOffset + 256.0f)
+			projectile.pos += projectile.dir * projectile.speed * dt;
+
+			if (projectile.pos.x < screenOffset || projectile.pos.x > screenOffset + 256.0f)
 			{
-				projectileFired = false;
+				ownProjectiles.erase(ownProjectiles.begin() + i);
+				i--;
 			}
 		}
 
-		if (timeToSpawnBot >= 0.0f)
+		auto pos = Sprite::ToPixels(transform.GetGlobal().Pos());
+
+		Math::Vector2 size(12, 20.0f);
+
+		leftPos = pos - Math::Vector3(size.x * 0.5f, 0.0f, 0.0f);
+		rightPos = pos + Math::Vector3(size.x * 0.5f, size.y, 0.0f);
+
+		for (int i = 0; i < enemyProjectiles.size(); i++)
 		{
-			timeToSpawnBot -= dt;
+			auto& projectile = enemyProjectiles[i];
 
-			if (timeToSpawnBot < 0.0f)
+			projectile.pos += projectile.dir * projectile.speed * dt;
+
+			if (projectile.pos.x < screenOffset || projectile.pos.x > screenOffset + 256.0f || projectile.pos.y < 0.0f)
 			{
-				timeToSpawnBot = -1.0f;
-
-				botPosY = 20.0f + Math::Rand() * 30.0f;
-
-				botPos = transform.position;
-				botPos.x = 255.0f + screenOffset;
-				botPos.y = botPosY;
-				botWave = 0.0f;
-
-				GetRoot()->Log("SpawnBot", "Enter");
-				
+				enemyProjectiles.erase(enemyProjectiles.begin() + i);
+				i--;
 			}
-		}
-		else
-		{
-			botPos.x -= dt * 100.0f;
-			botWave += dt * 4.0f;
-			botPos.y = botPosY + cosf(botWave) * 20.0f;
 
-			if (projectileFired &&
-				(projectilePos.x > botPos.x - 10.0f) && (botPos.x + 10.0f > projectilePos.x) &&
-				(projectilePos.y > botPos.y - 10.0f) && (botPos.y + 10.0f > projectilePos.y))
+			Math::Vector2 size = 8.0f;
+
+			auto prjleftPos = projectile.pos - Math::Vector3(size.x * 0.5f, size.y * 0.5f, 0.0f);
+			auto prjRightPos = projectile.pos + Math::Vector3(size.x * 0.5f, size.y * 0.5f, 0.0f);
+
+			if (TestRect(leftPos, rightPos, prjleftPos, prjRightPos))
 			{
-				timeToSpawnBot = 2.0f + Math::Rand() * 2.0f;
-				projectileFired = false;
-				time2ShowExp = 0.2f;
-				explostion.GotoNode("Exp", true);
-				expPos = botPos;
-			}
-			else
-			if (botPos.x < screenOffset)
-			{
-				timeToSpawnBot = 2.0f + Math::Rand() * 2.0f;
+				SetActiveScreen(true);
+				break;
 			}
 		}
 	}
 
 	void Character::Draw(float dt)
 	{
-		if (projectileFired)
+		for (int i = 0; i < ownProjectiles.size(); i++)
 		{
+			auto& proj = ownProjectiles[i];
+
 			Transform trasn = transform;
-			trasn.position = projectilePos;
+			trasn.position = proj.pos;
 			trasn.size = projectile.GetSize();
 			projectile.Draw(&trasn, COLOR_WHITE, dt);
 		}
 		
+		for (int i = 0; i < enemyProjectiles.size(); i++)
+		{
+			auto& proj = enemyProjectiles[i];
+
+			Transform trasn = transform;
+			trasn.position = proj.pos;
+			trasn.size = projectile.GetSize();
+			projectile.Draw(&trasn, COLOR_WHITE, dt);
+		}
+
 		if (time2ShowExp >= 0.0f)
 		{
 			time2ShowExp -= dt;
@@ -233,13 +308,52 @@ namespace Oak
 				explostion.Draw(&trasn, COLOR_WHITE, dt);
 			}
 		}
+	}
 
-		if (timeToSpawnBot < 0.0f)
+	void Character::CheckPlayerDead(Math::Vector3 p1, Math::Vector3 p2)
+	{
+		if (TestRect(leftPos, rightPos, p1, p2))
 		{
-			Transform trasn = transform;
-			trasn.position = botPos;
-			trasn.size = enemy.GetSize();
-			enemy.Draw(&trasn, COLOR_WHITE, dt);
+			SetActiveScreen(true);
 		}
+	}
+
+	bool Character::CheckPlayerBullet(Math::Vector3 p1, Math::Vector3 p2, bool oneHitLeft)
+	{
+		for (int i = 0; i < ownProjectiles.size(); i++)
+		{
+			auto& proj = ownProjectiles[i];
+
+			Math::Vector2 size = 8.0f;
+
+			auto leftPos = proj.pos - Math::Vector3(size.x * 0.5f, size.y * 0.5f, 0.0f);
+			auto rightPos = proj.pos + Math::Vector3(size.x * 0.5f, size.y * 0.5f, 0.0f);
+
+			if (TestRect(leftPos, rightPos, p1, p2))
+			{
+				ownProjectiles.erase(ownProjectiles.begin() + i);
+
+				if (oneHitLeft)
+				{
+					time2ShowExp = 0.2f;
+					explostion.GotoNode("Exp", true);
+					expPos = (p1 + p2) * 0.5f;
+				}
+
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	void Character::AddEnemyProjectile(Math::Vector3 pos, Math::Vector2 dir, float speed)
+	{
+		Projectile projectile;
+		projectile.dir = dir;
+		projectile.pos = pos;
+		projectile.speed = speed;
+
+		enemyProjectiles.push_back(projectile);
 	}
 }

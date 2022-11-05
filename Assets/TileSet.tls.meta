@@ -6,14 +6,14 @@
 	{
 		"camPos" :
 		{
-			"x" : -2.333333,
-			"y" : 4.333333
+			"x" : -17.666668,
+			"y" : 3.333330
 		},
 		"camZoom" : 3.000000,
-		"selTile" : 24,
+		"selTile" : 28,
 		"sizeX" : 16,
 		"sizeY" : 16,
-		"count" : 28,
+		"count" : 31,
 		"Tile" : [
 			{
 				"x" : -5,
@@ -292,6 +292,36 @@
 				{
 					"Path" : "tileset.png",
 					"sliceIndex" : 35,
+					"animIndex" : -1
+				}
+			},
+			{
+				"x" : 1,
+				"y" : 2,
+				"Texture" :
+				{
+					"Path" : "tileset.png",
+					"sliceIndex" : 42,
+					"animIndex" : -1
+				}
+			},
+			{
+				"x" : 2,
+				"y" : 2,
+				"Texture" :
+				{
+					"Path" : "tileset.png",
+					"sliceIndex" : 43,
+					"animIndex" : -1
+				}
+			},
+			{
+				"x" : 3,
+				"y" : 2,
+				"Texture" :
+				{
+					"Path" : "tileset.png",
+					"sliceIndex" : 44,
 					"animIndex" : -1
 				}
 			}

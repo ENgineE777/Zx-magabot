@@ -18,33 +18,50 @@ namespace Oak
 		int curScreen = -1;
 		float screenOffset = 0.0f;
 
+		struct Projectile
+		{
+			Math::Vector2 dir;
+			Math::Vector3 pos;
+			float speed = 0.0f;
+		};
+
 		AssetTextureRef projectile;
-		AssetTextureRef enemy;
 		AssetAnimGraph2DRef explostion;
 		SceneEntityRef<Camera2D> camera;
 		SceneEntityRef<Node2D> screensRoot;
 
+		int spawnRoom = 0;
+		Math::Vector3 spawnPos;
+
 		bool flipped = false;
-		bool projectileFired = false;
-		float projectileDir = 1.0f;
-		Math::Vector3 projectilePos;
-		float timeToSpawnBot = 1.0f;
-		Math::Vector3 botPos;
-		float botPosY = 0.0f;
-		float botWave = 0.0f;
+		
+		eastl::vector<Projectile> ownProjectiles;
+		eastl::vector<Projectile> enemyProjectiles;
 
 		float time2ShowExp = -1.0f;
 		Math::Vector3 expPos;
 
+		Math::Vector3 leftPos;
+		Math::Vector3 rightPos;
+
 	public:
+
+		static Character* player;
+
 		META_DATA_DECL_BASE(SimpleScript)
 
 		void Init() override;
 
-		void SetActiveScreen(int index);
+		void SetSpawnPoint(Math::Vector3 pos);
+		void SetActiveScreen(bool isRespawn);
 
 		void Play() override;
 		void Update(float dt) override;
+
 		void Draw(float dt);
+
+		void CheckPlayerDead(Math::Vector3 p1, Math::Vector3 p2);
+		bool CheckPlayerBullet(Math::Vector3 p1, Math::Vector3 p2, bool oneHitLeft);
+		void AddEnemyProjectile(Math::Vector3 pos, Math::Vector2 dir, float speed);
 	};
 }

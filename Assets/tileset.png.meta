@@ -36,7 +36,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice1",
@@ -66,7 +67,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice2",
@@ -96,7 +98,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice3",
@@ -126,7 +129,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice4",
@@ -156,7 +160,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice5",
@@ -186,7 +191,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice6",
@@ -216,7 +222,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice7",
@@ -246,7 +253,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice8",
@@ -276,7 +284,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice9",
@@ -306,7 +315,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice10",
@@ -336,7 +346,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice11",
@@ -366,7 +377,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice12",
@@ -396,7 +408,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice13",
@@ -426,7 +439,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice14",
@@ -456,7 +470,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice15",
@@ -486,7 +501,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice16",
@@ -516,7 +532,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice17",
@@ -546,7 +563,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice18",
@@ -576,7 +594,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice19",
@@ -606,7 +625,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice20",
@@ -636,7 +656,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice21",
@@ -666,7 +687,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice22",
@@ -696,7 +718,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice23",
@@ -726,7 +749,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice24",
@@ -756,7 +780,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice25",
@@ -786,7 +811,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice26",
@@ -816,7 +842,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : true
+				"hasCollision" : true,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice27",
@@ -846,7 +873,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : true
+				"hasCollision" : true,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice28",
@@ -876,7 +904,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : true
+				"hasCollision" : true,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice29",
@@ -906,7 +935,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice30",
@@ -936,7 +966,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice31",
@@ -966,7 +997,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice32",
@@ -996,7 +1028,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice33",
@@ -1026,7 +1059,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice34",
@@ -1056,7 +1090,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice35",
@@ -1086,7 +1121,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : true
+				"hasCollision" : true,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice36",
@@ -1116,7 +1152,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : true
+				"hasCollision" : true,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice37",
@@ -1146,7 +1183,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : true
+				"hasCollision" : true,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice38",
@@ -1176,7 +1214,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice39",
@@ -1206,7 +1245,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice40",
@@ -1236,7 +1276,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice41",
@@ -1266,7 +1307,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice42",
@@ -1296,7 +1338,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice43",
@@ -1326,7 +1369,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice44",
@@ -1356,7 +1400,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice45",
@@ -1386,7 +1431,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice46",
@@ -1416,7 +1462,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice47",
@@ -1446,7 +1493,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice48",
@@ -1476,7 +1524,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice49",
@@ -1506,7 +1555,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice50",
@@ -1536,7 +1586,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice51",
@@ -1566,7 +1617,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice52",
@@ -1596,7 +1648,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice53",
@@ -1626,7 +1679,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : true
+				"hasCollision" : true,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice54",
@@ -1656,7 +1710,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice55",
@@ -1686,7 +1741,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice56",
@@ -1716,7 +1772,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice57",
@@ -1746,7 +1803,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice58",
@@ -1776,7 +1834,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice59",
@@ -1806,7 +1865,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice60",
@@ -1836,7 +1896,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			},
 			{
 				"name" : "Slice61",
@@ -1866,7 +1927,8 @@
 					"x" : 0.500000,
 					"y" : 0.500000
 				},
-				"hasCollision" : false
+				"hasCollision" : false,
+				"physGroup" : 1
 			}
 		],
 		"anim_count" : 0,
